@@ -135,6 +135,7 @@ class MulTrajError(object):
 
     def cache_current_error(self):
         if self.abs_errors:
+            print(self.cache_results_dir)
             with open(os.path.join(self.cache_results_dir,
                                    'mt_cached_abs_err_' +
                                    self.align_str+'.pickle'), 'w') as f:

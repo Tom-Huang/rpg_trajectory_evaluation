@@ -105,7 +105,7 @@ def plot_odometry_error_per_dataset(dataset_rel_err, dataset_names, algorithm_na
             122, xlabel='Distance traveled (m)', ylabel='Rotation error (deg / m)')
         pu.boxplot_compare(ax, distances, [rel_err['rot_deg_per_m'][v] for v in algorithm_names],
                            config_labels, config_colors, legend=True)
-        fig.tight_layout()
+        # fig.tight_layout()
         fig.savefig(output_dir+'/'+dataset_nm +
                     '_trans_rot_error'+FORMAT, bbox_inches="tight", dpi=args.dpi)
         plt.close(fig)
@@ -316,6 +316,11 @@ def parse_config_file(config_fn, sort_names):
     yaml = YAML()
     with open(config_fn) as f:
         d = yaml.load(f)
+    print(d)
+    for i in d:
+        print(i)
+    print(d['Datasets'])
+    print(d['Datasets'].keys())
     datasets = d['Datasets'].keys()
     if sort_names:
         datasets.sort()
@@ -428,7 +433,7 @@ if __name__ == '__main__':
         '\n'.join(['- {}: {}'.format(k, v)
                    for k, v in args.__dict__.items()])))
 
-    print("Will analyze results from {0} and output will be "
+    print("Will analyze results from {0} and output will "
           "in {1}".format(args.results_dir, args.output_dir))
     output_dir = args.output_dir
 
@@ -539,7 +544,6 @@ if __name__ == '__main__':
     print("#####################################")
     print(">>> Analyze different error types...")
     print("#####################################")
-    print(Fore.RED+">>> Processing absolute trajectory errors...")
     if args.rmse_table:
         rmse_table = {}
         rmse_table['values'] = []

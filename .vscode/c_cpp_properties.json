@@ -1,0 +1,42 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/opt/ros/melodic/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/devel/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/eigen_checks/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/heap_mapping/laser_mapper/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/heap_mapping/laser_scan_assembler/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/heap_mapping/laser_slam/laser_slam/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/heap_mapping/laser_slam/laser_slam_ros/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/mincurves/mincurves/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/minkindr/minkindr/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/minkindr_ros/minkindr_conversions/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/minkindr_gtsam/minkindr_gtsam/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/numpy_eigen/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/volumetric_mapping/octomap_world/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/pcl_conversions/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/perception_pcl/pcl_ros/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pointmatcher-ros/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_bullet/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_eigen/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_geometry_msgs/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_kdl/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_msgs/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_ros/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/pcl_catkin/geometry2/tf2_sensor_msgs/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/heap_mapping/laser_slam/sensor_drivers/velodyne_assembler/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/visual_lidar_mapping/visual_lidar_mapping/include/**",
+        "/media/hcg/My_Passport/semester_project/catkin_ws/src/volumetric_mapping/volumetric_map_base/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

@@ -12,7 +12,7 @@ from colorama import init, Fore
 import add_path
 from trajectory import Trajectory
 import plot_utils as pu
-from fn_constants import kNsToEstFnMapping, kNsToMatchFnMapping, kFnExt
+from fn_constants import kNsToEstFnMapping, kNsToMatchFnMapping, kNsToGtFnMapping, kFnExt
 from multiple_traj_errors import MulTrajError
 
 init(autoreset=True)
@@ -33,7 +33,7 @@ def analyze_multiple_trials(results_dir, est_type, n_trials,
         if n_trials == 1:
             suffix = ''
         else:
-            suffix = str(trial_i)
+            suffix = str(trial_i+1)
         print(Fore.RED+"### Trial {0} ###".format(trial_i))
 
         match_base_fn = kNsToMatchFnMapping[est_type]+suffix+'.'+kFnExt
@@ -46,6 +46,7 @@ def analyze_multiple_trials(results_dir, est_type, n_trials,
         traj = Trajectory(
             results_dir, est_type=est_type, suffix=suffix,
             nm_est=kNsToEstFnMapping[est_type] + suffix + '.'+kFnExt,
+            nm_gt=kNsToGtFnMapping[est_type] + suffix + '.' + kFnExt,
             nm_matches=match_base_fn,
             preset_boxplot_distances=preset_boxplot_distances,
             preset_boxplot_percentages=preset_boxplot_percentages)
