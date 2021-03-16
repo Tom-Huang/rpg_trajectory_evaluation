@@ -33,27 +33,55 @@ def boxplot_compare(ax, xlabels,
     leg_handles = []
     leg_labels = []
     idx = 0
-    for idx, d in enumerate(data):
-        # print("idx and d: {0} and {1}".format(idx, d))
-        w = 1 / (1.5 * n_data + 1.5)
-        widths = [w for pos in np.arange(n_xlabel)]
-        positions = [pos - 0.5 + 1.5 * w + idx * w
-                     for pos in np.arange(n_xlabel)]
-        # print("Positions: {0}".format(positions))
-        bp = ax.boxplot(d, 0, '', positions=positions, widths=widths)
-        color_box(bp, data_colors[idx])
-        tmp, = plt.plot([1, 1], data_colors[idx])
-        leg_handles.append(tmp)
-        leg_labels.append(data_labels[idx])
-        idx += 1
-    ax.set_xticks(np.arange(n_xlabel))
-    ax.set_xticklabels(xlabels)
-    xlims = ax.get_xlim()
-    ax.set_xlim([xlims[0]-0.1, xlims[1]-0.1])
-    if legend:
-        # ax.legend(leg_handles, leg_labels, bbox_to_anchor=(
-            # 1.05, 1), loc=2, borderaxespad=0.)
-        ax.legend(leg_handles, leg_labels)
+    max_d = 0
+    min_d = 100
+    print("data ", data)
+
+    # for idx, d in enumerate(data):
+    #     # print("idx and d: {0} and {1}".format(idx, d))
+    #     w = 1 / (1.5 * n_data + 1.5)
+    #     widths = [w for pos in np.arange(n_xlabel)]
+    #     positions = [pos - 0.5 + 1.5 * w + idx * w
+    #                  for pos in np.arange(n_xlabel)]
+    #     # print("Positions: {0}".format(positions))
+    #     bp = ax.boxplot(d[0], 0, '', positions=positions, widths=widths, labels=data_labels[idx])
+    #     color_box(bp, data_colors[idx])
+    #     tmp, = plt.plot([1, 1], data_colors[idx])
+    #     leg_handles.append(tmp)
+    #     leg_labels.append(data_labels[idx])
+    #     idx += 1
+    #     if max(d[0]) > max_d:
+    #         max_d = max(d[0])
+    #     if min(d[0]) < min_d:
+    #         min_d = min(d[0])
+    # ax.set_xticks(np.arange(n_xlabel))
+    # ax.set_xticklabels(xlabels)
+
+
+    # print("idx and d: {0} and {1}".format(idx, d))
+    w = 1 / (1.5 * n_data + 1.5)
+    widths = [w for pos in np.arange(n_xlabel)]
+    positions = [pos - 0.5 + 1.5 * w + idx * w
+                    for pos in np.arange(n_xlabel)]
+    # print("Positions: {0}".format(positions))
+    plot_data = [d[0] for d in data]
+    bp = ax.boxplot(plot_data, 0, '', labels=data_labels)
+    # color_box(bp, data_colors[idx])
+    # tmp, = plt.plot([1, 1], data_colors[idx])
+    # leg_handles.append(tmp)
+    # leg_labels.append(data_labels[idx])
+    # idx += 1
+    # if max(d[0]) > max_d:
+    #     max_d = max(d[0])
+    # if min(d[0]) < min_d:
+    #     min_d = min(d[0])
+
+    # xlims = ax.get_xlim()
+    # ax.set_xlim([xlims[0]-0.1, xlims[1]-0.1])
+    # print(min_d, max_d)
+    # ax.set_ylim([max(min_d-0.1,0), max_d+0.1])
+    # if legend:
+        # ax.legend(leg_handles, leg_labels)
     map(lambda x: x.set_visible(False), leg_handles)
 
 

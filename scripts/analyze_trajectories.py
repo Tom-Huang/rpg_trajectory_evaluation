@@ -129,7 +129,7 @@ def collect_rmse_per_dataset(config_multierror_list,
 
 
 def plot_rmse_per_dataset(algorithm_rmse, dataset_names, algorithm_names,
-                          output_dir, plot_settings):
+                          output_dir, plot_settings, sensor_type="camera"):
     config_labels = []
     config_colors = []
     assert sorted(algorithm_names) == sorted(list(algorithm_rmse['trans_err'].keys()))
@@ -146,12 +146,18 @@ def plot_rmse_per_dataset(algorithm_rmse, dataset_names, algorithm_names,
         assert len(algorithm_rmse['rot_err'][v]) == n_data
 
     fig = plt.figure(figsize=(6, 3))
+    # ax = fig.add_subplot(
+        # 111, xlabel='Datasets',
+        # ylabel='Translation RMSE (m)')
     ax = fig.add_subplot(
-        111, xlabel='Datasets',
-        ylabel='Translation RMSE (m)')
+        111, ylabel='Translation RMSE (m)')
     pu.boxplot_compare(ax, labels,
                        [algorithm_rmse['trans_err'][v] for v in algorithm_names],
                        config_labels, config_colors)
+    if sensor_type  == "camera":
+        ax.set_title("Camera trajectory error")
+    if sensor_type  == "lidar":
+        ax.set_title("LiDAR trajectory error")
     fig.tight_layout()
     fig.savefig(output_dir+'/' +
                 'all_translation_rmse'+FORMAT, bbox_inches="tight", dpi=args.dpi)
@@ -163,6 +169,10 @@ def plot_rmse_per_dataset(algorithm_rmse, dataset_names, algorithm_names,
         ylabel='Rotation RMSE (deg)')
     pu.boxplot_compare(ax, labels, [algorithm_rmse['rot_err'][v] for v in algorithm_names],
                        config_labels, config_colors)
+    if sensor_type  == "camera":
+        ax.set_title("Camera trajectory error")
+    if sensor_type  == "lidar":
+        ax.set_title("LiDAR trajectory error")
     fig.tight_layout()
     fig.savefig(output_dir+'/' +
                 'all_rotation_rmse'+FORMAT, bbox_inches="tight", dpi=args.dpi)
@@ -422,6 +432,7 @@ if __name__ == '__main__':
                         help='Save plots as png instead of pdf',
                         action='store_true')
     parser.add_argument('--dpi', type=int, default=300)
+    parser.add_argument('--sensor_type', type=str, default="camera", help="camera/lidar")
     parser.set_defaults(odometry_error_per_dataset=False, overall_odometry_error=False,
                         rmse_table=False,
                         plot_trajectories=False, rmse_boxplot=False,
@@ -577,7 +588,7 @@ if __name__ == '__main__':
                                                   rmse_plot_alg)
         print("--- Generate boxplot for RMSE ---")
         plot_rmse_per_dataset(algorithm_rmse, datasets, algorithms,
-                              output_dir, plot_settings)
+                              output_dir, plot_settings, sensor_type=args.sensor_type)
     print(Fore.GREEN+"<<< ...processing absolute trajectory errors done.")
 
     print(Fore.RED+">>> Collecting odometry errors per dataset...")
